@@ -6,4 +6,3 @@ class Solution:
         return [list(s1.difference(s2)), list(s2.difference(s1))]
         
         
-        

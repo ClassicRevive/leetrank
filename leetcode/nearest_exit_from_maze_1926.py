@@ -1,5 +1,9 @@
 # shortest path to exit in grid BFS algorithm. Note the is_valid and usage of queue.
 # my own solution, fast enough, but can be improved. Fun problem
+
+# optimisation: instead of backtracking, just record the current distance and update as we go
+# optimisation: use tuple for dirs instead of list
+
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
         # bfs algorithm by coordinates

@@ -1,5 +1,6 @@
 # nasty weighted graph division problem. Could probably use BFS to be quicker, but DFS with backtracking is accepted.
 # Finds a single path from source to target, and multiplies the weights sequentially. 
+
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         # build graph from equations

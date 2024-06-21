@@ -1,4 +1,7 @@
 # this is my own raw solution, which is accepted but slower than others. Still need to study editorial
+
+# optimisation: Use tuples
+# alternative: Instead of 2 queues approach, use a singel queue and a sentinel to separate between the levels
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         # BFS with 2 queues. Each time we empty a queue, we finish a wave.

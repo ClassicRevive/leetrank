@@ -9,6 +9,8 @@ class Solution:
         self.path_length = 0
             
         def dfs(node, parent, steps):
+            ''' Recursive calls down the tree in both directions, keeping track of the number of zigzag steps on the current path
+                if the zig zag steps exceed the current maximum, update the maximum (maximum is like a global variable) '''
             if node:
                 self.path_length = max(steps, self.path_length)
 

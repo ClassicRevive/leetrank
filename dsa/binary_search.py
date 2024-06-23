@@ -1,47 +1,72 @@
 
 # iterative
-def bsearch(a, q):
-    n = len(a)
+def bsearch(arr, q):
+    n = len(arr)
     low = 0
     high = n-1
-    
 
-    while low < high:
+    while low <= high:
         mid = (low+high)//2
-        if q == a[mid]:
+        if q == arr[mid]:
             return mid
-        elif q < a[mid]:
-            high = mid
+        elif q < arr[mid]:
+            high = mid-1
         else:
             low = mid+1
     
-    return print(f"{q} not found")
-
+    print(f"{q} not found")
 
 # recursive
-def bsearch_rec(a, q, low, high):
+def bsearch_rec(arr, q, low, high):
     mid = (low+high)//2
     # base case: not found
-    if low >= high:
+    if low > high:
         print(f"{q} not found")
         return
 
-    # base ca
-    if a[mid]==q:
+    # base case
+    if arr[mid]==q:
         return mid
-    elif q > a[mid]:
-        return bsearch_rec(a, q, mid+1, high)
+    elif q > arr[mid]:
+        return bsearch_rec(arr, q, mid+1, high)
     else:
-        return bsearch_rec(a, q, low, mid)
+        return bsearch_rec(arr, q, low, mid-1)
+
+
+# first occurrence binary search
+def first(arr, q):
+    low = 0
+    high = len(arr)-q
+    while low <= high:
+        mid = (low+high)//2
+        # leftmost condition
+        if (mid == 0 or q > arr[mid-1]) and arr[mid] == q:
+            return mid
+        elif q > arr[mid]:
+            low = mid+1
+        else:
+            high = mid-1
+    
+    # didn't find occurence. This behaviour may be tweaked depending on the problem
+    return -1
 
 
 if __name__ == '__main__':
-    a = [3, 4, 5, 6, 7, 19, 22]
-    ans_it = bsearch(a, 7)
-    ans_rec = bsearch_rec(a, 7, 0, len(a)-1)
-    print(f"Position = {ans_it}, item = {a[ans_it]}")
-    print(f"Position = {ans_rec}, item = {a[ans_rec]}")
+    arr = [3, 4, 5, 6, 7, 19, 22]
+    ans_it = bsearch(arr, 22)
+    ans_rec = bsearch_rec(arr, 22, 0, len(arr)-1)
+    print(f"Position = {ans_it}, item = {arr[ans_it]}")
+    print(f"Position = {ans_rec}, item = {arr[ans_rec]}")
     print(f"Solutions match: {ans_it==ans_rec}")
 
-    bsearch(a, 8)
-    bsearch_rec(a, 8, 0, len(a)-1)
+    print("Not found example:")
+    bsearch(arr, 8)
+    bsearch_rec(arr, 8, 0, len(arr)-1)
+
+
+    # print("First occurrence example:")
+    # arr = [3, 4, 5, 5, 5, 6, 8]
+    # ans_it= bsearch(arr, 5)
+    # ans_first = first(arr, 5)
+    # print(f"Position = {ans_it}, item = {arr[ans_it]}")
+    # print(f"Position = {ans_first}, item = {arr[ans_first]}")

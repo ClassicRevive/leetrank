@@ -1,0 +1,17 @@
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
+        # check how long each pile will take to finish given k eating speed. 
+        # if total time > h, then not enough time
+        from math import ceil
+
+        low = 1
+        high = max(piles)
+        while True:
+            total_time = 0
+            for p in piles:
+                total_time += ceil(p/k)
+            
+            if total_time <= h:
+                return k
+            
+            k += 1        

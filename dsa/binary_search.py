@@ -10,11 +10,12 @@ def bsearch(arr, q):
         if q == arr[mid]:
             return mid
         elif q < arr[mid]:
-            high = mid-1
+            high = mid-1  # with the -1 here, the high can cross over the low, but if the value is present it will be returned
         else:
             low = mid+1
     
     print(f"{q} not found")
+    print(f"low: {low}, high: {high}")
 
 # recursive
 def bsearch_rec(arr, q, low, high):

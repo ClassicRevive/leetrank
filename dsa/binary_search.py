@@ -1,20 +1,23 @@
 
-# iterative
+# iterative, equivalent to bisect_left behaviour
 def bsearch(arr, q):
     n = len(arr)
     low = 0
     high = n-1
 
-    while low <= high:
+    while low < high:
         mid = (low+high)//2
         if q == arr[mid]:
             return mid
         elif q < arr[mid]:
-            high = mid-1  # with the -1 here, the high can cross over the low, but if the value is present it will be returned
+            high = mid  # with the -1 here, the high can cross over the low, but if the value is present it will be returned
         else:
             low = mid+1
     
-    print(f"{q} not found")
+    if arr[low] != q:
+        print(f"{q} not found, would be in position where {arr[low]} is")
+    if high == low:
+        return low
     print(f"low: {low}, high: {high}")
 
 # recursive
